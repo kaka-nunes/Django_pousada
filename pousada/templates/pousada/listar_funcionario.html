@@ -1,0 +1,49 @@
+{% extends 'pousada/base.html' %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+  <table class="table table-#fca95b table-borderless" style="color: #f3b67e">
+    
+    <h3> Lista de Funcionários </h3>
+    </br>
+
+      {% for funcionario in funcionarios %}
+
+          <tr>
+            <td>
+                <a href="{% url 'detalhar_funcionario' id=funcionario.id %}">   
+                    Nome:  {{funcionario.nome_funcionario}}</br>
+                </a>
+                CPF : {{funcionario.cpf_funcionario}}</br>
+                Telefone: {{funcionario.telefone_funcionario}}</br>
+                Email: {{funcionario.emai_funcionariol}}</br>
+                Sexo: {{funcionario.sexo_funcionario}}</br>
+                Turno: {{funcionario.turno}}</br>
+                Cargo: {{funcionario.cargo}}</br>
+                Ativo: {{funcionario.ativo}}</br>
+                </br> 
+            </td>
+            </br> 
+            <td>
+              <a class="btn btn-default" href="{% url 'editar_funcionario' id=funcionario.id %}">
+                <button type="submit" class="btn btn-outline-warning"> Editar</button>
+              </a>
+            </td>
+            <td>
+              <a class="btn btn-default" href="{% url 'deletar_funcionario' id=funcionario.id %}">
+                 <button type="button" class="btn btn-outline-warning">Deletar</button>
+             </a>
+            </td>
+           
+          </tr>
+        </br>
+            
+
+      {% endfor %}
+    </table>
+    <a class="btn btn-default" href="{% url 'cadastrar_funcionario' %}">
+      <button type="button" class="btn btn-outline-warning">Cadastrar</button>
+    </a>
+  {% endif %}
+
+{% endblock %}

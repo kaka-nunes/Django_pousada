@@ -1,0 +1,13 @@
+{% extends 'pousada/base.html' %}
+{% block content %}
+    {% if quarto.imagem %}
+        <img width="300" height="150" src="{{ quarto.imagem.url }}"></a></br>  
+        Quarto:  {{quarto.numero_quarto}}<br/>        
+    {% endif %}
+    
+    Status : {{quarto.status_quarto}}<br/>
+    Descricao: {{quarto.descricao}}<br/>
+    <br/>
+    
+    
+{% endblock %}

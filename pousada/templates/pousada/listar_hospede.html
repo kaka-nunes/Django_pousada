@@ -1,0 +1,42 @@
+{% extends 'pousada/base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <table class="table table-#fca95b table-borderless" style="color: #f3b67e">
+        <h3> Lista de Hospedes </h3>
+        </br>
+
+        {% for hospede in hospedes %}
+            <tr>
+                <td>
+                    <a href="{% url 'detalhar_hospede' id=hospede.id %}">
+                        Nome:  {{hospede.nome}}</br>
+                    </a>
+                    CPF : {{hospede.cpf}}</br>
+                    Telefone: {{hospede.telefone}}</br>
+                    Email: {{hospede.email}}</br>
+                    Sexo: {{hospede.sexo}}</br>
+                    </br>
+                </td>
+                <td>
+                    <a class="btn btn-default" href="{% url 'editar_hospede' id=hospede.id %}">
+                        <button type="button" class="btn btn-outline-warning"> Editar</button>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-default" href="{% url 'deletar_hospede' id=hospede.id %}">
+                    <button type="button" class="btn btn-outline-warning">Deletar</button>
+                </a>
+                </td>
+            </tr>
+        </br>
+
+
+        {% endfor %}
+    </table>
+    <a class="btn btn-default" href="{% url 'cadastrar_hospede' %}">
+        <button type="button" class="btn btn-outline-warning">Cadastrar</button>
+    </a>
+    {% endif %}
+{% endblock %}
+
+ 

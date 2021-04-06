@@ -1,0 +1,54 @@
+{% extends 'pousada/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        
+
+    <table class="table table-#fca95b table-borderless" style="color: #f3b67e"> 
+        <h3> Historico de reservas </h3>
+        <br/>
+
+        {% for reserva in reservas %}
+
+        <tr>
+            <td>
+                <a href="{% url 'detalhar_reserva' id=reserva.id %}">
+                    Nome Hospede:  {{reserva.nome_cliente}}
+                </a><br/>
+
+                Cpf: 
+                {% for cpf in reserva.hospede.all %}
+                    {{cpf.hospede}}
+                {% endfor %}</br>
+
+                Número Quarto: 
+                {% for numero_quarto in reserva.quarto.all %}
+                    {{numero_quartor.quarto}}
+                {% endfor %}</br>
+
+                Entrada: {{reserva.data_entrada}}</br>
+                Saida: {{reserva.data_saida}}</br>
+                Valor : {{reserva.valor}}</br>
+                Status : {{reserva.status_reserva}}</br>
+            </td>
+            <td>
+            <a class="btn btn-default" href="{% url 'editar_reserva' id=reserva.id %}">
+                <button type="button" class="btn btn-outline-warning"> Editar</button>
+            </a>
+            </td>
+            <td>
+                <a class="btn btn-default" href="{% url 'deletar_reserva' id=reserva.id %}">
+                   <button type="button" class="btn btn-outline-warning">Deletar</button>
+               </a>
+            </td>
+        </tr>
+
+        <br/>
+        {% endfor %}
+    </table>
+    {% endif %}
+    <!--<a class="btn btn-default" href="{% url 'cadastrar_quarto' %}">
+        <button type="button" class="btn btn-outline-warning">Cadastrar</button>
+    </a>-->
+
+{% endblock %}

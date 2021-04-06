@@ -1,0 +1,13 @@
+{% extends 'pousada/base.html' %}
+
+{% block content %}
+    <h2>Quarto</h2>
+    <form method="POST" class="table" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p}}
+        </div>
+        </br>
+        <button type="submit" class="btn btn-outline-warning" >Salvar</button>
+    </form>
+{% endblock %}

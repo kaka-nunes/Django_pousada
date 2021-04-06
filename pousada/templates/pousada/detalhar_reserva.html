@@ -1,0 +1,21 @@
+{% extends 'pousada/base.html' %}
+
+{% block content %}
+    
+    
+    Nome Hospede:  {{reserva.nome_cliente}}
+
+    Cpf: </br>
+    Número Quarto: <br/>
+    
+    {% for numero_quarto in reserva.quarto.all %}
+        {{numero_quarto}}<br/>
+    {% endfor %}
+
+    Entrada: {{reserva.data_entrada}}<br/>
+    Saida: {{reserva.data_saida}}<br/>
+    Valor : {{reserva.valor}}<br/>
+    Status : {{reserva.status_reserva}}</br>
+            
+
+{% endblock %}

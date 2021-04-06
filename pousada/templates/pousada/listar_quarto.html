@@ -1,0 +1,55 @@
+
+{% extends 'pousada/base.html' %} 
+
+{% block content %}
+
+  {% if user.is_authenticated %}
+    <h3 style="color: #f7861c">Usuário(a):  {{user.username}}</h3>
+    <a href="{% url 'logout_usuario' %}" style="color: #f7861c"></a>
+  {% else %}
+    <p style="color: #f7861c">Você precisa realizar o login.</p>
+  {% endif %}
+  </br>
+  <h3 style="color: #f7861c">Quartos </h3>
+  <table class="table table-#fca95b table-borderless" style="color: #f3b67e">
+
+    {% for quarto in quartos %}
+      <tr>
+        <td>
+          <a href="{% url 'detalhar_quarto' id=quarto.id %}">
+            <!--<img width="200" height="100" src="{{quarto.imagem.url}}"> <br/>-->
+            {% if quarto.imagem %}
+              <img width="300" height="150" src="{{ quarto.imagem.url }}"></a></br>          
+            {% endif %}
+          </a>
+          Quarto:  {{quarto.numero_quarto}}<br/>
+          Status : {{quarto.status_quarto}}<br/>
+          Descricao: {{quarto.descricao}}<br/>
+          <br/>
+        </td>
+        {% if user.is_authenticated %}
+        <td>
+          <a class="btn btn-default" href="{% url 'editar_quarto' id=quarto.id %}">
+            <button type="button" class="btn btn-outline-warning"> Editar</button>
+          </a>
+        </td>
+        <td>
+          <a class="btn btn-default" href="{% url 'deletar_quarto' id=quarto.id %}">
+             <button type="button" class="btn btn-outline-warning">Deletar</button>
+         </a>
+        </td>
+        {% endif %}
+      </tr>
+      </br> 
+    {% endfor %}
+  {% if user.is_authenticated %}
+  </table>
+  <a class="btn btn-default" href="{% url 'cadastrar_quarto' %}">
+    <button type="button" class="btn btn-outline-warning">Cadastrar</button>
+  </a>
+  {% endif %}
+{% endblock %}
+
+     
+
+        

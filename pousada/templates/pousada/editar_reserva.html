@@ -1,0 +1,16 @@
+{% extends 'pousada/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <h2>Fazer Check-in</h2>
+    <form method="POST" class="table" enctype="multipart/form-data">
+    {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p}}
+        </div>
+        </br>
+        <button type="submit" class="btn btn-outline-warning">Salvar</button>
+    </form>
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'pousada/base.html' %}
+{% block content %}
+
+    <form action="{% url 'autenticar_usuario' %}" method="post">
+    {% csrf_token %}
+        <form class="row g-3">
+            <div class="col-auto">
+                <label for="exampleInputEmail" class="form-label">Username</label>
+                <input name="username" type="text" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" >
+            </div>
+            <div class="col-auto">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div></br>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-outline-warning mb-3">Login</button>
+                
+                
+            </div>
+            
+            
+        </form>
+    </form>
+{% endblock %}
